@@ -5,7 +5,8 @@ public class RepeatTillWinn {
     static final int ladder = 1;
     public static void main(String[] args) {
         int playerStartPosition = 0;
-        while(playerStartPosition <= 100) {
+        int WinningPosition = 100;
+        while(playerStartPosition <= WinningPosition) {
             int NumAfterRolling = (int) Math.floor(Math.random() * 10) % 6 + 1;
             System.out.println("Number of rolling after dice by the player : " + NumAfterRolling);
             int CheckOption = (int) Math.floor(Math.random() * 10) % 3 + 1;
@@ -15,6 +16,9 @@ public class RepeatTillWinn {
                     break;
                 case ladder:
                     playerStartPosition = NumAfterRolling + playerStartPosition;
+                    if(playerStartPosition > WinningPosition)
+                        playerStartPosition = WinningPosition - NumAfterRolling;
+
                     System.out.println("Player move the position : " + playerStartPosition);
                     break;
                 default:
